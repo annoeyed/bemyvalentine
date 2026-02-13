@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: -apple-system, 'Apple SD Gothic Neo', 'AppleGothic', 'Malgun Gothic', sans-serif;
+    font-family: 'Gaegu', 'Hi Melody', -apple-system, 'Apple SD Gothic Neo', cursive;
     background: linear-gradient(135deg, #ffeef7 0%, #fff0f5 25%, #ffe4e6 50%, #ffeef7 75%, #fff0f5 100%);
     min-height: 100vh;
     display: flex;
@@ -18,13 +18,14 @@ body {
 .container {
     text-align: center;
     background: rgba(255, 255, 255, 0.98);
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(255, 182, 193, 0.3);
+    padding: 45px;
+    border-radius: 40px;
+    box-shadow: 0 25px 70px rgba(255, 182, 193, 0.35);
     max-width: 600px;
     width: 100%;
     animation: fadeIn 1s ease-in;
     backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 192, 203, 0.2);
 }
 
 @keyframes fadeIn {
@@ -39,9 +40,15 @@ body {
 }
 
 .heart-animation {
-    font-size: 60px;
+    font-size: 70px;
     animation: bounce 2s infinite;
     margin-bottom: 20px;
+    filter: drop-shadow(0 4px 8px rgba(255, 182, 193, 0.5));
+    transition: transform 0.3s;
+}
+
+.heart-animation:hover {
+    transform: scale(1.2);
 }
 
 @keyframes bounce {
@@ -54,11 +61,13 @@ body {
 }
 
 .title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #ff85a1;
     margin-bottom: 30px;
-    text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.4);
+    text-shadow: 3px 3px 10px rgba(255, 182, 193, 0.5);
     animation: pulse 2s infinite;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 @keyframes pulse {
@@ -79,10 +88,11 @@ body {
 }
 
 .puppy {
-    font-size: 80px;
+    font-size: 90px;
     animation: wiggle 3s infinite;
     cursor: pointer;
     transition: transform 0.3s;
+    filter: drop-shadow(0 4px 8px rgba(255, 182, 193, 0.4));
 }
 
 .puppy:nth-child(1) {
@@ -114,10 +124,11 @@ body {
 }
 
 .message {
-    font-size: 1.3rem;
-    color: #8b6f7e;
+    font-size: 1.5rem;
+    color: #9b7a8a;
     margin-bottom: 30px;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-weight: 400;
 }
 
 .buttons {
@@ -129,20 +140,22 @@ body {
 }
 
 .btn {
-    padding: 15px 40px;
-    font-size: 1.2rem;
+    padding: 18px 45px;
+    font-size: 1.4rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Gaegu', 'Hi Melody', cursive;
 }
 
 .btn-yes {
     background: linear-gradient(135deg, #ff9ec4, #ffb3d9);
     color: white;
     box-shadow: 0 4px 20px rgba(255, 158, 196, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .btn-yes:hover {
@@ -157,8 +170,9 @@ body {
     position: relative;
     animation: moveAround 0.5s infinite;
     transition: transform 0.2s ease-out;
-    font-size: 0.9rem;
-    padding: 10px 25px;
+    font-size: 1rem;
+    padding: 12px 28px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 @keyframes moveAround {
@@ -203,11 +217,38 @@ body {
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .container {
+        padding: 35px 25px;
+    }
+    
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .puppy {
+        font-size: 70px;
+    }
+    
+    .message {
+        font-size: 1.3rem;
+    }
+    
+    .btn {
+        padding: 15px 35px;
+        font-size: 1.2rem;
+    }
+    
+    .heart-animation {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
         padding: 30px 20px;
     }
     
     .title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .puppy {
@@ -215,26 +256,7 @@ body {
     }
     
     .message {
-        font-size: 1.1rem;
-    }
-    
-    .btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-    }
-    
-    .heart-animation {
-        font-size: 50px;
-    }
-}
-
-@media (max-width: 480px) {
-    .title {
-        font-size: 1.5rem;
-    }
-    
-    .puppy {
-        font-size: 50px;
+        font-size: 1.2rem;
     }
     
     .buttons {
@@ -243,6 +265,120 @@ body {
     }
     
     .btn {
-        width: 80%;
+        width: 85%;
+        font-size: 1.1rem;
     }
+    
+    .heart-animation {
+        font-size: 55px;
+    }
+}
+
+/* 이메일 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff 0%, #fff5f8 100%);
+    margin: auto;
+    padding: 40px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 25px 70px rgba(255, 182, 193, 0.4);
+    border: 3px solid rgba(255, 192, 203, 0.3);
+    position: relative;
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #ff85a1;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.close:hover {
+    transform: scale(1.2) rotate(90deg);
+}
+
+.modal-content h2 {
+    color: #ff85a1;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.modal-content p {
+    color: #8b6f7e;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.modal-content textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 182, 193, 0.5);
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-family: 'Gaegu', 'Hi Melody', cursive;
+    resize: vertical;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #555;
+    box-sizing: border-box;
+}
+
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #ff85a1;
+    box-shadow: 0 0 10px rgba(255, 133, 161, 0.3);
+}
+
+.modal-content textarea::placeholder {
+    color: #c0a8b8;
+}
+
+.modal-content #sendEmailBtn {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#emailStatus {
+    text-align: center;
+    min-height: 30px;
+    font-size: 1rem;
+}
+
+.puppy-message {
+    pointer-events: none;
 }

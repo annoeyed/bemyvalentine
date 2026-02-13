@@ -56,7 +56,7 @@ const messages = [
 ];
 
 yesBtn.addEventListener('click', () => {
-    result.textContent = '와아아! 사랑해요! 💕🐶💕';
+    result.textContent = '와아아! 사랑해요! 💗🐕💗';
     result.style.color = '#ff6b9d';
     result.style.fontSize = '2rem';
     
@@ -70,7 +70,7 @@ yesBtn.addEventListener('click', () => {
     // 2초 후에 만날 시간 메시지 표시
     setTimeout(() => {
         result.innerHTML = `
-            <div style="margin-bottom: 20px;">26.02.14일 14:00에 만나 💕 🐶 💖</div>
+            <div style="margin-bottom: 20px;">26.02.14일 14:00에 만나 💗 🐕 💗</div>
             <div id="countdown" style="font-size: 1.5rem; font-weight: bold; color: #ff6b9d;"></div>
         `;
         result.style.fontSize = '1.8rem';
@@ -105,7 +105,7 @@ noBtn.addEventListener('click', () => {
         if (noClickCount >= messages.length) {
             setTimeout(() => {
                 noBtn.style.display = 'none';
-                result.innerHTML = '그래도 사랑해요... 💕';
+                result.innerHTML = '그래도 사랑해요... 💗';
             }, 2000);
         }
     }
@@ -113,7 +113,7 @@ noBtn.addEventListener('click', () => {
 
 // 축하 효과 (confetti)
 function createConfetti() {
-    const emojis = ['💕', '💖', '💗', '💝', '🐶', '🐕', '💐', '🌹'];
+    const emojis = ['💗', '💕', '💖', '💝', '🐕', '🐾', '💐', '🌹', '✨'];
     const container = document.querySelector('.container');
     
     for (let i = 0; i < 50; i++) {
@@ -159,7 +159,7 @@ function startCountdown() {
         if (timeLeft <= 0) {
             const countdownEl = document.getElementById('countdown');
             if (countdownEl) {
-                countdownEl.innerHTML = '만날 시간이 왔어요! 💕 🐶 💖';
+                countdownEl.innerHTML = '만날 시간이 왔어요! 💗 🐕 💗';
             }
             return;
         }
@@ -201,12 +201,156 @@ function startCountdown() {
     setInterval(updateCountdown, 1000);
 }
 
-// 강아지 클릭 이벤트
+// 강아지 클릭 시 랜덤 메시지 표시
+const puppyMessages = [
+    "만나서 밥 먹자! 🍽️💕",
+    "날 따뜻해지면 한강 가자! 🌊💗",
+    "오늘 저녁에 영화 보러 갈까? 🎬💕",
+    "주말에 카페 가서 커피 마실래? ☕💗",
+    "함께 산책하러 가자! 🚶‍♀️💕",
+    "맛있는 디저트 먹으러 가자! 🍰💗",
+    "공원에서 피크닉 할까? 🧺💕",
+    "밤에 별 보러 가자! ⭐💗",
+    "함께 요리해볼까? 👨‍🍳💕",
+    "오늘은 집에서 편하게 쉬자! 🏠💗",
+    "새로운 맛집 찾아보자! 🍴💕",
+    "함께 쇼핑하러 갈까? 🛍️💗"
+];
+
+let currentPuppyMessage = null;
+
 document.querySelectorAll('.puppy').forEach(puppy => {
     puppy.addEventListener('click', () => {
+        // 랜덤 메시지 선택
+        let randomMessage;
+        do {
+            randomMessage = puppyMessages[Math.floor(Math.random() * puppyMessages.length)];
+        } while (randomMessage === currentPuppyMessage && puppyMessages.length > 1);
+        
+        currentPuppyMessage = randomMessage;
+        
+        // 메시지 표시
+        if (result.textContent && !result.textContent.includes('26.02.14일')) {
+            result.innerHTML = `<div style="font-size: 1.5rem; color: #ff85a1; animation: fadeIn 0.5s;">${randomMessage}</div>`;
+        } else {
+            // result가 카운트다운을 표시 중이면 별도로 표시
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'puppy-message';
+            messageDiv.innerHTML = `<div style="font-size: 1.5rem; color: #ff85a1; margin-top: 20px; animation: fadeIn 0.5s; background: rgba(255, 182, 193, 0.2); padding: 15px; border-radius: 15px;">${randomMessage}</div>`;
+            messageDiv.style.position = 'absolute';
+            messageDiv.style.top = '50%';
+            messageDiv.style.left = '50%';
+            messageDiv.style.transform = 'translate(-50%, -50%)';
+            messageDiv.style.zIndex = '1000';
+            messageDiv.style.pointerEvents = 'none';
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                messageDiv.style.transition = 'opacity 0.5s';
+                setTimeout(() => messageDiv.remove(), 500);
+            }, 3000);
+        }
+        
+        // 강아지 애니메이션
         puppy.style.animation = 'none';
+        puppy.style.transform = 'scale(1.3) rotate(15deg)';
         setTimeout(() => {
             puppy.style.animation = 'wiggle 3s infinite';
-        }, 10);
+            puppy.style.transform = '';
+        }, 300);
+    });
+});
+
+// 하트 클릭 시 이메일 모달 열기
+const heartBtn = document.getElementById('heartBtn');
+const emailModal = document.getElementById('emailModal');
+const closeModal = document.querySelector('.close');
+const sendEmailBtn = document.getElementById('sendEmailBtn');
+const emailMessage = document.getElementById('emailMessage');
+const emailStatus = document.getElementById('emailStatus');
+
+heartBtn.style.cursor = 'pointer';
+heartBtn.addEventListener('click', () => {
+    emailModal.style.display = 'flex';
+    emailMessage.value = '';
+    emailStatus.textContent = '';
+});
+
+closeModal.addEventListener('click', () => {
+    emailModal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === emailModal) {
+        emailModal.style.display = 'none';
+    }
+});
+
+// EmailJS 초기화 및 이메일 전송
+// ⚠️ EmailJS 설정이 필요합니다! EMAILJS_SETUP.md 파일을 참고하세요.
+// config.example.js를 config.js로 복사하고 실제 값으로 변경하세요!
+
+// 설정 파일이 로드되지 않았으면 기본값 사용
+// config.js 파일에서 EMAIL_CONFIG를 정의해야 합니다
+if (typeof EMAIL_CONFIG === 'undefined') {
+    window.EMAIL_CONFIG = {
+        EMAILJS_PUBLIC_KEY: "YOUR_PUBLIC_KEY",
+        EMAILJS_SERVICE_ID: "YOUR_SERVICE_ID",
+        EMAILJS_TEMPLATE_ID: "YOUR_TEMPLATE_ID",
+        TO_EMAIL: "your-email@example.com"
+    };
+}
+
+// EmailJS 초기화 (DOMContentLoaded 후)
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof emailjs !== 'undefined' && EMAIL_CONFIG && EMAIL_CONFIG.EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+        emailjs.init(EMAIL_CONFIG.EMAILJS_PUBLIC_KEY);
+    }
+});
+
+sendEmailBtn.addEventListener('click', () => {
+    const message = emailMessage.value.trim();
+    
+    if (!message) {
+        emailStatus.innerHTML = '<span style="color: #ff6b9d;">메시지를 입력해주세요! 💕</span>';
+        return;
+    }
+    
+    // EmailJS 설정 확인
+    if (!EMAIL_CONFIG || 
+        EMAIL_CONFIG.EMAILJS_PUBLIC_KEY === "YOUR_PUBLIC_KEY" || 
+        EMAIL_CONFIG.EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" || 
+        EMAIL_CONFIG.EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID" ||
+        EMAIL_CONFIG.TO_EMAIL === "your-email@example.com") {
+        emailStatus.innerHTML = '<span style="color: #ff6b9d;">EmailJS 설정이 필요해요! config.example.js를 config.js로 복사하고 설정하세요. 💕</span>';
+        return;
+    }
+    
+    sendEmailBtn.disabled = true;
+    sendEmailBtn.textContent = '전송 중... 💌';
+    emailStatus.innerHTML = '<span style="color: #ff85a1;">전송 중이에요... 💗</span>';
+    
+    // EmailJS를 사용한 이메일 전송
+    emailjs.send(EMAIL_CONFIG.EMAILJS_SERVICE_ID, EMAIL_CONFIG.EMAILJS_TEMPLATE_ID, {
+        to_email: EMAIL_CONFIG.TO_EMAIL,
+        message: message,
+        from_name: "발렌타인 사이트"
+    })
+    .then(() => {
+        emailStatus.innerHTML = '<span style="color: #4CAF50;">메시지가 전송되었어요! 💗</span>';
+        emailMessage.value = '';
+        sendEmailBtn.textContent = 'Send 💌';
+        sendEmailBtn.disabled = false;
+        
+        setTimeout(() => {
+            emailModal.style.display = 'none';
+        }, 2000);
+    })
+    .catch((error) => {
+        emailStatus.innerHTML = '<span style="color: #ff6b9d;">전송에 실패했어요. 다시 시도해주세요! 💕</span>';
+        sendEmailBtn.textContent = 'Send 💌';
+        sendEmailBtn.disabled = false;
+        console.error('EmailJS Error:', error);
     });
 });

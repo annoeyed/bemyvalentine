@@ -1,0 +1,15 @@
+# 이메일 설정 파일 (개인 정보 포함)
+config.js
+
+# 로그 파일
+*.log
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# 에디터 파일
+.vscode/
+.idea/
+*.swp
+*.swo
