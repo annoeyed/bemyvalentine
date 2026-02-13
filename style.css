@@ -229,6 +229,18 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
+@media (max-width: 768px) {
+    .btn-no {
+        animation: moveAround 0.3s infinite;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-no {
+        animation: moveAround 0.2s infinite;
+    }
+}
+
 @keyframes moveAround {
     0% {
         transform: translate(0, 0);

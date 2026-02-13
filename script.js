@@ -83,29 +83,22 @@ yesBtn.addEventListener('click', () => {
 
 noBtn.addEventListener('click', () => {
     if (noClickCount < messages.length) {
-        // 메시지를 배열 형태로 표시
-        const messagesDisplay = messages.map((msg, index) => {
-            if (index <= noClickCount) {
-                return `    "${msg}"`;
-            }
-            return null;
-        }).filter(msg => msg !== null).join(',\n');
-        
-        result.innerHTML = `<pre style="text-align: left; display: inline-block; background: rgba(255, 182, 193, 0.2); padding: 15px; border-radius: 10px; font-size: 1rem;">const messages = [\n${messagesDisplay}\n];</pre>`;
+        // 메시지만 표시 (코드 형태가 아닌)
+        result.innerHTML = `<div style="font-size: 1.5rem; color: #ff85a1; background: rgba(255, 182, 193, 0.2); padding: 15px; border-radius: 15px; animation: fadeIn 0.5s;">${messages[noClickCount]}</div>`;
         result.style.color = '#ff6b9d';
         noClickCount++;
         
         // 버튼 크기 조절 (점점 작아지게)
         const scaleValue = Math.max(0.3, 1 - noClickCount * 0.15);
         noBtn.style.transform = `scale(${scaleValue})`;
-        const animationSpeed = Math.max(0.2, 0.5 - noClickCount * 0.1);
+        const animationSpeed = Math.max(0.15, 0.3 - noClickCount * 0.05);
         noBtn.style.animation = `moveAround ${animationSpeed}s infinite`;
         
         // 마지막 메시지 후에는 버튼 숨기기
         if (noClickCount >= messages.length) {
             setTimeout(() => {
                 noBtn.style.display = 'none';
-                result.innerHTML = '그래도 사랑해요... 💗';
+                result.innerHTML = '미워 . 😤';
             }, 2000);
         }
     }
