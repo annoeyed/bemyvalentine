@@ -1,11 +1,35 @@
-# Will You Be My Valentine? 🐶
+# Will You Be My Valentine? 🐕
 
 애인을 위한 귀여운 발렌타인 데이 사이트입니다.
 
-## 로컬에서 실행하기
+## 🌐 배포된 사이트
 
-1. 파일들을 다운로드합니다
+**라이브 사이트**: [https://bemyvalentine-gamma-ten.vercel.app/](https://bemyvalentine-gamma-ten.vercel.app/)
+
+**GitHub 저장소**: [https://github.com/annoeyed/bemyvalentine](https://github.com/annoeyed/bemyvalentine)
+
+## ✨ 주요 기능
+
+- 💗 귀여운 강아지 이모지 애니메이션 (🐾 🐕 🦮)
+- 💕 귀여운 Gaegu 폰트 적용
+- 💖 인터랙티브 버튼 (Yes/No)
+  - "네!" 버튼: 축하 효과와 함께 만날 시간 메시지 표시
+  - "음..." 버튼: 마우스를 피하며 움직이는 장난스러운 버튼
+- ⏰ 실시간 카운트다운 타이머 (2026년 2월 14일 14:00까지)
+- 🎉 축하 효과 (Yes 버튼 클릭 시)
+- 📱 완전 반응형 디자인 (모바일/데스크톱 모두 지원)
+- 🎨 부드러운 파스텔 색상과 애니메이션
+
+## 🚀 로컬에서 실행하기
+
+1. 저장소를 클론합니다:
+   ```bash
+   git clone https://github.com/annoeyed/bemyvalentine.git
+   cd bemyvalentine
+   ```
+
 2. `index.html` 파일을 더블클릭하거나 브라우저로 열기
+
 3. 또는 간단한 웹 서버로 실행:
    ```bash
    # Python이 설치되어 있다면
@@ -15,62 +39,75 @@
    npx serve
    ```
 
-## 인터넷에서 접근 가능하게 배포하기
+## 📦 배포 방법
 
-로컬호스트는 다른 사람이 접근할 수 없으므로, 다음 방법 중 하나를 사용하세요:
+이 프로젝트는 **Vercel**을 통해 배포되어 있습니다.
 
-### 방법 1: Vercel (추천 - 가장 쉬움)
+### Vercel에 배포하기
 
 1. [Vercel](https://vercel.com)에 가입 (GitHub 계정으로 간단히 가입 가능)
 2. "New Project" 클릭
-3. 이 폴더를 드래그 앤 드롭하거나 GitHub에 업로드 후 연결
-4. 몇 초 후 자동으로 배포되고 URL이 생성됩니다!
-5. 생성된 URL을 애인에게 공유하면 됩니다
+3. GitHub 저장소 `annoeyed/bemyvalentine` 선택
+4. Framework Preset: "Other" 선택
+5. "Deploy" 클릭
+6. 몇 초 후 자동으로 배포되고 URL이 생성됩니다!
 
-### 방법 2: Netlify
+### 자동 배포
 
-1. [Netlify](https://www.netlify.com)에 가입
-2. "Add new site" → "Deploy manually"
-3. 이 폴더를 드래그 앤 드롭
-4. 자동으로 URL이 생성됩니다!
+GitHub 저장소에 푸시하면 Vercel이 자동으로 재배포합니다:
+```bash
+git add .
+git commit -m "업데이트 내용"
+git push origin main
+```
 
-### 방법 3: GitHub Pages
-
-1. GitHub에 새 저장소 생성
-2. 이 파일들을 업로드
-3. Settings → Pages → Source를 "main branch"로 설정
-4. `https://[사용자명].github.io/[저장소명]` 형태의 URL이 생성됩니다
-
-### 방법 4: Cloudflare Pages
-
-1. [Cloudflare Pages](https://pages.cloudflare.com)에 가입
-2. GitHub 저장소 연결 또는 직접 업로드
-3. 자동 배포됩니다
-
-## 추천 배포 방법
-
-**Vercel**을 가장 추천합니다:
-- 완전 무료
-- 설정이 매우 간단 (드래그 앤 드롭만으로 가능)
-- 자동으로 HTTPS 적용
-- 빠른 속도
-- 커스텀 도메인도 무료로 사용 가능
-
-## 파일 구조
+## 📁 파일 구조
 
 ```
-valentine-site/
+bemyvalentine/
 ├── index.html    # 메인 HTML 파일
-├── style.css     # 스타일시트
-├── script.js     # 인터랙티브 기능
+├── style.css     # 스타일시트 (Gaegu 폰트, 파스텔 색상)
+├── script.js     # 인터랙티브 기능 (카운트다운, 애니메이션)
 └── README.md     # 이 파일
 ```
 
-## 기능
+## 🎨 사용된 기술
 
-- 💕 귀여운 강아지 이모지 애니메이션
-- 💖 인터랙티브 버튼 (Yes/No)
-- 🐶 반응형 디자인 (모바일/데스크톱 모두 지원)
-- 💐 축하 효과 (Yes 버튼 클릭 시)
+- **HTML5**: 구조
+- **CSS3**: 스타일링 및 애니메이션
+- **JavaScript**: 인터랙티브 기능
+- **Google Fonts**: Gaegu, Hi Melody 폰트
+- **Vercel**: 호스팅 및 배포
 
-즐거운 발렌타인 데이 되세요! 💕
+## 💝 특징
+
+- 귀여운 손글씨 스타일 폰트 (Gaegu)
+- 부드러운 파스텔 색상 팔레트
+- 움직이는 강아지 이모지 애니메이션
+- 마우스를 피하는 장난스러운 "음..." 버튼
+- 실시간 카운트다운 타이머
+- 반응형 디자인으로 모든 기기에서 완벽하게 작동
+
+## 📝 커스터마이징
+
+### 만날 시간 변경하기
+
+`script.js` 파일의 `startCountdown()` 함수에서 날짜를 변경하세요:
+```javascript
+const targetDate = new Date('2026-02-14T14:00:00');
+```
+
+### 색상 변경하기
+
+`style.css` 파일에서 색상 값을 수정하세요:
+- 배경: `background` 속성
+- 버튼: `.btn-yes`, `.btn-no` 클래스
+- 텍스트: `.title`, `.message` 클래스
+
+## 🎯 라이선스
+
+이 프로젝트는 개인 사용을 위해 만들어졌습니다.
+
+---
+
+즐거운 발렌타인 데이 되세요! 💗🐕💗
