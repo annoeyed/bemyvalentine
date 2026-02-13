@@ -27,6 +27,12 @@ body {
     flex-direction: column;
 }
 
+@media (max-width: 768px) {
+    .emoji-nav {
+        display: none; /* 모바일에서 숨기기 */
+    }
+}
+
 .nav-emoji {
     font-size: 35px;
     text-decoration: none;
@@ -218,8 +224,8 @@ body {
     position: relative;
     animation: moveAround 0.5s infinite;
     transition: transform 0.2s ease-out;
-    font-size: 1rem;
-    padding: 12px 28px;
+    font-size: 0.85rem;
+    padding: 8px 20px;
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -285,6 +291,11 @@ body {
         font-size: 1.2rem;
     }
     
+    .btn-no {
+        font-size: 0.9rem;
+        padding: 10px 22px;
+    }
+    
     .heart-animation {
         font-size: 60px;
     }
@@ -317,18 +328,14 @@ body {
         font-size: 1.1rem;
     }
     
+    .btn-no {
+        font-size: 0.8rem;
+        padding: 8px 18px;
+        width: 70%;
+    }
+    
     .heart-animation {
         font-size: 55px;
-    }
-    
-    .emoji-nav {
-        top: 10px;
-        right: 10px;
-        gap: 10px;
-    }
-    
-    .nav-emoji {
-        font-size: 28px;
     }
     
     .puppy-message-content {
