@@ -329,9 +329,15 @@ body {
     }
     
     .btn-no {
-        font-size: 0.8rem;
-        padding: 8px 18px;
-        width: 70%;
+        font-size: 0.5rem;
+        padding: 4px 10px;
+        width: 40px;
+        min-width: 40px;
+        height: 25px;
+        line-height: 1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     
     .heart-animation {
