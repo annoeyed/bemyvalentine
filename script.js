@@ -304,6 +304,11 @@ if (typeof EMAIL_CONFIG === 'undefined') {
     };
 }
 
+// EMAIL_CONFIG가 전역 변수로 설정되도록 보장
+if (typeof window.EMAIL_CONFIG === 'undefined' && typeof EMAIL_CONFIG !== 'undefined') {
+    window.EMAIL_CONFIG = EMAIL_CONFIG;
+}
+
 // EmailJS 초기화 (DOMContentLoaded 후)
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof emailjs !== 'undefined' && EMAIL_CONFIG && EMAIL_CONFIG.EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {

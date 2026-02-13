@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- config.js 파일 로드 (로컬: 수동 생성, Vercel: 빌드 시 자동 생성) -->
-    <script src="config.js"></script>
+    <script src="config.js" onerror="console.warn('config.js not found, using defaults')"></script>
 </head>
 <body>
     <!-- 이모지 네비게이션 -->
