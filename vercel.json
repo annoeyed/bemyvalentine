@@ -1,5 +1,6 @@
 {
   "buildCommand": "node build-config.js || echo 'Using local config.js'",
+  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/(.*)",
