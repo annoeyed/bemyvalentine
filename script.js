@@ -96,8 +96,10 @@ noBtn.addEventListener('click', () => {
         noClickCount++;
         
         // 버튼 크기 조절 (점점 작아지게)
-        noBtn.style.transform = `scale(${1 - noClickCount * 0.1})`;
-        noBtn.style.animation = `moveAround ${2 - noClickCount * 0.2}s infinite`;
+        const scaleValue = Math.max(0.3, 1 - noClickCount * 0.15);
+        noBtn.style.transform = `scale(${scaleValue})`;
+        const animationSpeed = Math.max(0.2, 0.5 - noClickCount * 0.1);
+        noBtn.style.animation = `moveAround ${animationSpeed}s infinite`;
         
         // 마지막 메시지 후에는 버튼 숨기기
         if (noClickCount >= messages.length) {

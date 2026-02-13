@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'AppleGothic', 'Malgun Gothic', sans-serif;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
     min-height: 100vh;
     display: flex;
@@ -152,8 +152,10 @@ body {
     background: linear-gradient(135deg, #a8e6cf, #dcedc1);
     color: #555;
     position: relative;
-    animation: moveAround 1.5s infinite;
+    animation: moveAround 0.5s infinite;
     transition: transform 0.2s ease-out;
+    font-size: 0.9rem;
+    padding: 10px 25px;
 }
 
 @keyframes moveAround {
@@ -178,7 +180,7 @@ body {
 }
 
 .btn-no:hover {
-    animation: moveAround 0.8s infinite;
+    animation: moveAround 0.3s infinite;
     box-shadow: 0 6px 20px rgba(168, 230, 207, 0.4);
 }
 
