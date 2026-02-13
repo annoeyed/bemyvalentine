@@ -229,28 +229,26 @@ document.querySelectorAll('.puppy').forEach(puppy => {
         
         currentPuppyMessage = randomMessage;
         
-        // 메시지 표시
-        if (result.textContent && !result.textContent.includes('26.02.14일')) {
-            result.innerHTML = `<div style="font-size: 1.5rem; color: #ff85a1; animation: fadeIn 0.5s;">${randomMessage}</div>`;
-        } else {
-            // result가 카운트다운을 표시 중이면 별도로 표시
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'puppy-message';
-            messageDiv.innerHTML = `<div style="font-size: 1.5rem; color: #ff85a1; margin-top: 20px; animation: fadeIn 0.5s; background: rgba(255, 182, 193, 0.2); padding: 15px; border-radius: 15px;">${randomMessage}</div>`;
-            messageDiv.style.position = 'absolute';
-            messageDiv.style.top = '50%';
-            messageDiv.style.left = '50%';
-            messageDiv.style.transform = 'translate(-50%, -50%)';
-            messageDiv.style.zIndex = '1000';
-            messageDiv.style.pointerEvents = 'none';
-            document.body.appendChild(messageDiv);
-            
-            setTimeout(() => {
-                messageDiv.style.opacity = '0';
-                messageDiv.style.transition = 'opacity 0.5s';
-                setTimeout(() => messageDiv.remove(), 500);
-            }, 3000);
-        }
+        // 메시지를 별도 팝업으로 표시 (겹침 방지)
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'puppy-message-popup';
+        messageDiv.innerHTML = `
+            <div class="puppy-message-content">
+                <div class="puppy-message-text">${randomMessage}</div>
+            </div>
+        `;
+        document.body.appendChild(messageDiv);
+        
+        // 애니메이션 효과
+        setTimeout(() => {
+            messageDiv.classList.add('show');
+        }, 10);
+        
+        // 3초 후 제거
+        setTimeout(() => {
+            messageDiv.classList.remove('show');
+            setTimeout(() => messageDiv.remove(), 500);
+        }, 3000);
         
         // 강아지 애니메이션
         puppy.style.animation = 'none';
@@ -276,6 +274,17 @@ heartBtn.addEventListener('click', () => {
     emailMessage.value = '';
     emailStatus.textContent = '';
 });
+
+// 이모지 네비게이션 - 이메일 버튼
+const emailNavBtn = document.getElementById('emailNavBtn');
+if (emailNavBtn) {
+    emailNavBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        emailModal.style.display = 'flex';
+        emailMessage.value = '';
+        emailStatus.textContent = '';
+    });
+}
 
 closeModal.addEventListener('click', () => {
     emailModal.style.display = 'none';
